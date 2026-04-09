@@ -1,0 +1,70 @@
+## Build
+
+*.dll
+*.exe
+*.pdb
+*.cache
+[Bb]in/
+[Oo]bj/
+[Dd]ebug/
+[Rr]elease/
+x64/
+x86/
+
+## NuGet
+*.nupkg
+*.snupkg
+**/packages/*
+!**/packages/repositories.config
+project.lock.json
+project.fragment.lock.json
+artifacts/
+
+## Visual Studio
+.vs/
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+*.rsuser
+[Tt]est[Rr]esult*/
+[Dd]ebug[Pp]ublic/
+[Rr]eleases/
+BenchmarkDotNet.Artifacts/
+
+## VSIX
+*.vsix
+
+## User-specific files
+*.csproj.user
+*.vbproj.user
+*.dbproj.user
+
+## Rider
+.idea/
+*.sln.iml
+
+## VS Code
+.vscode/
+
+## Resharper
+_ReSharper*/
+*.[Rr]e[Ss]harper
+*.DotSettings.user
+
+## Coverage
+*.coverage
+*.coveragexml
+coverage/
+TestResults/
+
+## OS files
+.DS_Store
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+
+## Temp files
+*.tmp
+*.temp
+*.log

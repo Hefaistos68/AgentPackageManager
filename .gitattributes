@@ -1,0 +1,25 @@
+# Auto detect text files and perform LF normalization
+* text=auto
+
+# Source code
+*.cs text diff=csharp
+*.csproj text
+*.sln text eol=crlf
+*.xml text
+*.json text
+*.md text
+
+# Windows-specific
+*.cmd text eol=crlf
+*.bat text eol=crlf
+*.ps1 text eol=crlf
+*.vsct text eol=crlf
+*.vsixmanifest text eol=crlf
+
+# Binary
+*.nupkg binary
+*.vsix binary
+*.png binary
+*.ico binary
+*.dll binary
+*.exe binary

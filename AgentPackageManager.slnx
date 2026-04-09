@@ -1,0 +1,12 @@
+<Solution>
+  <Folder Name="/docs/">
+    <File Path="CHANGELOG.md" />
+    <File Path="CONTRIBUTING.md" />
+    <File Path="LICENSE" />
+    <File Path="README.md" />
+  </Folder>
+  <Project Path="ApmPackager.Tests/ApmPackager.Tests.csproj" Id="41a4963c-582e-4e12-88dc-9b2372636d73" />
+  <Project Path="ApmPackager/ApmPackager.csproj" />
+  <Project Path="ApmVSExtension.Tests/ApmVSExtension.Tests.csproj" Id="429f4bfb-0be0-4f22-b91a-b1ef6bb0f246" />
+  <Project Path="ApmVSExtension/ApmVSExtension.csproj" Id="8d16f41c-48ad-47b8-811a-d837403dd528" />
+</Solution>

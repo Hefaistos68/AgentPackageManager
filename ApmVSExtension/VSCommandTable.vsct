@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<CommandTable xmlns="http://schemas.microsoft.com/VisualStudio/2005-10-18/CommandTable" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+	<Extern href="stdidcmd.h"/>
+	<Extern href="vsshlids.h"/>
+	<Include href="KnownImageIds.vsct"/>
+	<Include href="VSGlobals.vsct"/>
+
+	<Commands package="ApmVSExtension">
+		<Groups>
+			<Group guid="ApmVSExtension" id="SolutionNodeMenuGroup" priority="0x0010">
+				<Parent guid="guidSHLMainMenu" id="IDM_VS_CTXT_SOLNNODE"/>
+			</Group>
+			<Group guid="ApmVSExtension" id="ProjectNodeMenuGroup" priority="0x0010">
+				<Parent guid="guidSHLMainMenu" id="IDM_VS_CTXT_PROJNODE"/>
+			</Group>
+		</Groups>
+
+		<Buttons>
+			<Button guid="ApmVSExtension" id="CreateAgentPackageCommand" priority="0x0100" type="Button">
+				<Parent guid="ApmVSExtension" id="SolutionNodeMenuGroup"/>
+				<Icon guid="ImageCatalogGuid" id="Package"/>
+				<CommandFlag>IconIsMoniker</CommandFlag>
+				<Strings>
+					<ButtonText>Create Agent NuGet Package</ButtonText>
+				</Strings>
+			</Button>
+			<Button guid="ApmVSExtension" id="CreateProjectAgentPackageCommand" priority="0x0100" type="Button">
+				<Parent guid="ApmVSExtension" id="ProjectNodeMenuGroup"/>
+				<Icon guid="ImageCatalogGuid" id="Package"/>
+				<CommandFlag>IconIsMoniker</CommandFlag>
+				<Strings>
+					<ButtonText>Create Agent NuGet Package</ButtonText>
+				</Strings>
+			</Button>
+		</Buttons>
+	</Commands>
+
+	<Symbols>
+		<GuidSymbol name="ApmVSExtension" value="{ff3b2bf5-536d-4b04-8f7a-d48ac2a08c2d}">
+			<IDSymbol name="SolutionExplorerGroup" value="0x1020" />
+			<IDSymbol name="SolutionNodeMenuGroup" value="0x0001" />
+			<IDSymbol name="ProjectNodeMenuGroup" value="0x0002" />
+			<IDSymbol name="CreateAgentPackageCommand" value="0x0100" />
+			<IDSymbol name="CreateProjectAgentPackageCommand" value="0x0101" />
+		</GuidSymbol>
+	</Symbols>
+</CommandTable>
