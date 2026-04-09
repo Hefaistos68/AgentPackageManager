@@ -107,6 +107,10 @@
     </PackageReference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="..\LICENSE" Link="LICENSE">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <IncludeInVSIX>true</IncludeInVSIX>
+    </Content>
     <EmbeddedResource Include="Dialogs\PackageConfigDialog.resx">
       <DependentUpon>PackageConfigDialog.cs</DependentUpon>
       <SubType>Designer</SubType>
