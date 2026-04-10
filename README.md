@@ -10,6 +10,7 @@ Agent Package Manager consists of two components:
 |---|---|
 | **ApmPackager** | .NET 8 command-line tool that creates NuGet packages from `.github` folders and materializes package content into projects |
 | **ApmVSExtension** | Visual Studio extension (VSIX) that adds a right-click menu command to create agent packages directly from a solution |
+| **ApmVSCodeExtension** | Visual Studio Code extension that creates agent NuGet packages from workspace folders or Explorer-selected folders |
 
 ### How It Works
 
@@ -32,6 +33,8 @@ The materialization uses a smart merge strategy:
 
 - [.NET 8 SDK](https://dotnet.microsoft.com/download/dotnet/8.0) or later
 - [Visual Studio 2022](https://visualstudio.microsoft.com/) 17.8+ (for the VSIX extension)
+- [Visual Studio Code](https://code.visualstudio.com/) 1.90+ (for the VS Code extension)
+- [Node.js](https://nodejs.org/) 18+ (for VS Code extension development, testing, and VSIX packaging)
 
 ### Building
 
@@ -101,6 +104,69 @@ Both commands follow the same workflow:
 4. Create the NuGet package
 
 Auto-version bumping: if the `.github` content has changed since the last package was created, the patch version is automatically incremented.
+
+## Visual Studio Code Extension
+
+The VS Code extension adds package creation to both the Command Palette and Explorer context menu.
+
+### Functionality
+
+- **Create Agent NuGet Package (Workspace)**
+  - Prompts for a workspace folder when multiple folders are open.
+  - Packages the `.github` folder from the selected workspace root.
+- **Create Agent NuGet Package (Folder)**
+  - Available from the Explorer folder context menu.
+  - Packages the `.github` folder from the selected folder.
+
+Both commands:
+
+1. Validate that a `.github` folder exists.
+2. Read or create `.github/agent-package.json`.
+3. Compute a package content hash.
+4. Auto-increment patch version when content has changed.
+5. Prompt for package metadata (package ID, version, description, authors).
+6. Run `ApmPackager` and write output to `bin/packages`.
+7. Offer to reveal the generated `.nupkg` in Explorer.
+
+### Configuration
+
+Setting: `apmVscodeExtension.packagerPath`
+
+Use this setting when the extension cannot locate `ApmPackager` automatically.
+
+Supported values:
+
+- Path to `ApmPackager.csproj`
+- Path to a built `ApmPackager.dll`
+- Path to a native executable
+
+If empty, the extension tries common sibling locations in this repository.
+
+### Install and Run
+
+#### Option 1: Run in Extension Development Host
+
+1. Open `ApmVSCodeExtension` in VS Code.
+2. Install dependencies: `npm install`.
+3. Press `F5` (or run the `Run Extension` launch config).
+4. In the Extension Development Host, run either command from the Command Palette.
+
+#### Option 2: Package and install VSIX locally
+
+1. Install VSCE: `npm install -g @vscode/vsce`.
+2. From `ApmVSCodeExtension`, create the package: `vsce package`.
+3. Install into VS Code:
+   - Command Palette: **Extensions: Install from VSIX...**
+   - Or CLI: `code --install-extension apm-vscode-extension-<version>.vsix`
+
+### Usage Example
+
+1. Ensure your target folder contains a `.github` directory.
+2. Run one of the extension commands:
+   - Workspace command from Command Palette, or
+   - Folder command from Explorer context menu.
+3. Confirm or edit metadata in the prompts.
+4. Find the generated package in `bin/packages` under the selected base folder.
 
 ## Package Structure
 
