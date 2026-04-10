@@ -46,6 +46,8 @@ BenchmarkDotNet.Artifacts/
 
 ## VS Code
 .vscode/
+node_modules/
+.vscode-test/
 
 ## Resharper
 _ReSharper*/

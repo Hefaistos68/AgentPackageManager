@@ -1,4 +1,11 @@
 <Solution>
+  <Folder Name="/ApmVScodeExtension/">
+    <File Path="ApmVSCodeExtension/package.json" />
+    <File Path="ApmVSCodeExtension/README.md" />
+  </Folder>
+  <Folder Name="/ApmVScodeExtension/src/">
+    <File Path="ApmVSCodeExtension/src/extension.js" />
+  </Folder>
   <Folder Name="/docs/">
     <File Path="CHANGELOG.md" />
     <File Path="CONTRIBUTING.md" />

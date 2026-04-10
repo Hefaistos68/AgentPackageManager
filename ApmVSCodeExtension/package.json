@@ -1,0 +1,71 @@
+{
+  "name": "apm-vscode-extension",
+  "displayName": "Agent Package Manager",
+  "description": "Create agent NuGet packages from .github folders in VS Code.",
+  "version": "0.0.1",
+  "publisher": "Hefaistos68",
+  "license": "MIT",
+  "icon": "resources/icon.png",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Hefaistos68/AgentPackageManager"
+  },
+  "keywords": [
+    "copilot",
+    "agent",
+    "nuget",
+    "packaging",
+    "github"
+  ],
+  "engines": {
+    "vscode": "^1.90.0"
+  },
+  "scripts": {
+    "test": "mocha \"test/**/*.test.js\""
+  },
+  "devDependencies": {
+    "mocha": "^10.7.0",
+    "proxyquire": "^2.1.3"
+  },
+  "categories": [
+    "Other"
+  ],
+  "main": "./src/extension.js",
+  "activationEvents": [
+    "onCommand:apmVscodeExtension.createWorkspaceAgentPackage",
+    "onCommand:apmVscodeExtension.createFolderAgentPackage"
+  ],
+  "contributes": {
+    "commands": [
+      {
+        "command": "apmVscodeExtension.createWorkspaceAgentPackage",
+        "title": "Create Agent NuGet Package (Workspace)",
+        "category": "Agent Package Manager"
+      },
+      {
+        "command": "apmVscodeExtension.createFolderAgentPackage",
+        "title": "Create Agent NuGet Package (Folder)",
+        "category": "Agent Package Manager"
+      }
+    ],
+    "menus": {
+      "explorer/context": [
+        {
+          "command": "apmVscodeExtension.createFolderAgentPackage",
+          "when": "explorerResourceIsFolder",
+          "group": "navigation@50"
+        }
+      ]
+    },
+    "configuration": {
+      "title": "Agent Package Manager",
+      "properties": {
+        "apmVscodeExtension.packagerPath": {
+          "type": "string",
+          "default": "",
+          "description": "Optional path to ApmPackager.csproj, ApmPackager.dll, or a native executable. Leave empty to use the sibling ApmPackager project in this repository."
+        }
+      }
+    }
+  }
+}
