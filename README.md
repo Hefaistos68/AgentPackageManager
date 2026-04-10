@@ -85,6 +85,8 @@ The VSIX extension adds a **Create Agent NuGet Package** command to two context 
 
 Right-click the **solution node** to package the `.github` folder located at the solution root. The generated package is written to `bin/packages/` under the solution directory.
 
+[![Solution Context Menu](./solution-context-menu.png)](./solution-context-menu.png)
+
 ### Project-Level Packaging
 
 Right-click a **project node** to package the `.github` folder located in the project directory. This allows individual projects to maintain their own agent configurations independently. The generated package is written to `bin/packages/` under the project directory.
